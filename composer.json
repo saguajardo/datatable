@@ -1,0 +1,23 @@
+{
+    "name": "saguajardo/datatable",
+    "description": "Libreria que provee la utilizacion de Datatables para Laravel 5",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastian Ariel Guajardo",
+            "email": "guajardosebas@gmail.com"
+        }
+    ],
+	"autoload": {
+		"psr-4": {
+			"Saguajardo\\Datatable\\": "src/"
+		},
+        "files": [
+            "src/helpers.php"
+        ]
+	},
+    "minimum-stability": "dev",
+    "require": {
+		"Illuminate/Support": "~5"
+	}
+}
