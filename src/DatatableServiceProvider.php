@@ -45,6 +45,11 @@ class DatatableServiceProvider extends ServiceProvider
     {
 		// cargar las vistas (por ahora no lo utilizo)
         $this->loadViewsFrom(__DIR__.'/views', 'datatable');
+
+        $this->publishes([
+            __DIR__ . '/views' => base_path('resources/views/vendor/datatable'),
+            __DIR__ . '/config/config.php' => config_path('datatable.php')
+        ]);
     }
 	
     /**
