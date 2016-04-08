@@ -91,14 +91,14 @@ class PruebaController extends Controller {
      */
     public function __construct()
     {
-        //Construct PruebaController
+        //Construct WelcomeController
     }
 	
 	public function prueba(DatatableBuilder $datatableBuilder) {
-		// Creo el datatable
+		        // Creo el datatable
         $datatable = $datatableBuilder->create(\App\Datatables\PruebaDatatable::class, [
             'method' => 'GET',
-            'url'    => 'seguridad/usuarios-listado',
+            'url'    => 'listado',
             'data'      => ['id' => 'usuariosTable',
                             'fields' => [
                                 'data.descripcion',
@@ -111,8 +111,24 @@ class PruebaController extends Controller {
         return view('prueba', compact('datatable'));
 		
 	}
+	
+	public function listado() {
+		
+		$array[] = array(
+			"id" => 10,
+			"descripcion" => "Prueba",
+			"perfil" => "Admin",
+			"id_perfil" => 20,
+		);
+        
+		echo json_encode(array(
+            "data" =>
+                $array
+        ));
+	}
 
 }
+
 ```
 
 Crear las rutas
@@ -120,6 +136,7 @@ Crear las rutas
 ```php
 // app/Http/routes.php
 Route::get('prueba',  array('as' => 'prueba', 'uses' => 'PruebaController@prueba'));
+Route::get('listado',  array('as' => 'listado', 'uses' => 'PruebaController@listado'));
 ```
 
 Imprimir el Datatable en la vista con el Helper `Datatable()`:
