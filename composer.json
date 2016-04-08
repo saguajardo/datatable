@@ -18,6 +18,7 @@
 	},
     "minimum-stability": "dev",
     "require": {
-		"Illuminate/Support": "~5"
+		"Illuminate/Support": "~5",
+        "laravelcollective/html": "5.2.*"
 	}
 }

@@ -30,7 +30,8 @@ class Datatable {
      */
     protected $datatableOptions = [
         'method' => 'POST',
-        'url' => null
+        'url' => null,
+        'functions' => [],
     ];
 
     /**
@@ -246,6 +247,20 @@ class Datatable {
 
     }
 
+
+    /**
+     * Define the datatable's default values
+     * @return string
+     */
+    protected function renderDefaultScriptDatatable() {
+
+        return $this->datatableHelper->getView()
+            ->make($this->getTemplateDefaultScript())
+            ->with('defaults', $this->datatableHelper->getConfig('defaults'))
+            ->render();        
+
+    }
+
     /**
      * Render the Script
      *
@@ -254,13 +269,14 @@ class Datatable {
     protected function renderScript()
     {
 
+        $functions = $this->datatableHelper->mergeOptions($this->datatableOptions['functions'], $this->datatableHelper->getConfig('functions'));
+
         return $this->datatableHelper->getView()
             ->make($this->getTemplateScript())
             ->with('id', $this->datatableOptions['data']['id'])
             ->with('url', $this->datatableOptions['url'])
             ->with('method', $this->datatableOptions['method'])
-            ->with('filter', $this->datatableHelper->getConfig('filter'))
-            ->with('ordering', $this->datatableHelper->getConfig('ordering'))
+            ->with('functions', $functions)
             ->with('fields', $this->datatableOptions['data']['fields'])
             ->render();
 
@@ -277,7 +293,7 @@ class Datatable {
      */
     public function renderDatatable(array $options = [])
     {
-        return $this->renderTable($options) . $this->renderScript();
+        return $this->renderDefaultScriptDatatable() . $this->renderTable($options) . $this->renderScript();
     }
 
     /**
@@ -287,7 +303,7 @@ class Datatable {
      */
     protected function getTemplateTable()
     {
-        return $this->getDatatableOption('template', $this->datatableHelper->getConfig('table'));
+        return $this->getDatatableOption('template', $this->datatableHelper->getConfig('table_template'));
     }
 
     /**
@@ -297,7 +313,17 @@ class Datatable {
      */
     protected function getTemplateScript()
     {
-        return $this->getDatatableOption('template', $this->datatableHelper->getConfig('script'));
+        return $this->getDatatableOption('template', $this->datatableHelper->getConfig('script_template'));
+    }
+
+    /**
+     * Get template from options if provided, otherwise fallback to config
+     *
+     * @return mixed
+     */
+    protected function getTemplateDefaultScript()
+    {
+        return $this->getDatatableOption('template', $this->datatableHelper->getConfig('default_template'));
     }
 
 }
