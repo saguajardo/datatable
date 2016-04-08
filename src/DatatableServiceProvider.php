@@ -105,7 +105,7 @@ class DatatableServiceProvider extends ServiceProvider
                 return new HtmlBuilder($app['url'], $app['view']);
             });
 
-            if (! $this->aliasExists('Html')) {
+            if (! $this->aliasExists('HTML')) {
 
                 AliasLoader::getInstance()->alias(
                     'HTML',
@@ -113,6 +113,16 @@ class DatatableServiceProvider extends ServiceProvider
                 );
             }
         }
+    }
+
+    /**
+     * Check if an alias already exists in the IOC
+     * @param $alias
+     * @return bool
+     */
+    private function aliasExists($alias)
+    {
+        return array_key_exists($alias, AliasLoader::getInstance()->getAliases());
     }
 
 }
