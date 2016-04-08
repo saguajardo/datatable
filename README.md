@@ -30,6 +30,7 @@ Luego agregar la siguientes línea en el archivo `config/app.php`, en el apartad
     'providers' => [
         // ...
         Saguajardo\Datatable\DatatableServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
     ]
 ```
 
@@ -40,11 +41,13 @@ Ahora agregar los Facades (también en el archivo `config/app.php`), apartado `a
         // ...
         'Datatable'=> Saguajardo\Datatable\Facades\DatatableFacade::class,
         'DatatableBuilder'=> Saguajardo\Datatable\DatatableBuilder::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'HTML' => Collective\Html\HtmlFacade::class,
     ]
 
 ```
 
-**Aviso**: Este paquete agregará el paquete `laravelcollective/html` y cargará los Alias (Form, HTML) si ellos no existen en su proyecto
+**Aviso**: Este paquete agregará el paquete `laravelcollective/html`. Es por ello que si no se contenía hasta el momento dicho paquete, se deben agregar los alias y provider de la clase `laravelcollective/html` de acuerdo a lo que se muestra en las líneas anteriores.
 
 ### Quick start
 
@@ -156,3 +159,9 @@ Accedemos a la url `/prueba`; El código anterior generará lo siguiente:
 <p align="center">
   <img src="https://github.com/saguajardo/datatable/blob/1.1/datatable.JPG" alt="datatable's image"/>
 </p>
+
+Para publicar los archivos de configuración se debe ejecutar la siguiente instrucción con artisan:
+
+`php artisan vendor:publish`
+
+Esto creará el archivo `config/datatable.php` (desde donde se podrán modificar las configuraciones de la clase) y las vistas utilizadas en el directorio `resources/views/vendor/datatable/`. En ellas se podrán modificar los templates del datatable a su gusto.
