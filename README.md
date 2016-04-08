@@ -137,5 +137,5 @@ Imprimir el Datatable en la vista con el Helper `Datatable()`:
 Accedemos a la url `/prueba`; El código anterior generará lo siguiente:
 
 <p align="center">
-  <img src="" alt="datatable's image"/>
+  <img src="https://github.com/saguajardo/datatable/blob/1.1/datatable.JPG" alt="datatable's image"/>
 </p>
