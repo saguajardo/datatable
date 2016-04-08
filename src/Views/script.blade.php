@@ -8,8 +8,6 @@
                     alert("Error");
                 }
             },
-            "filter": {{ $filter }},
-            "ordering": {{ $ordering }},
             "columns": [
                 @foreach($fields as $field)
                     {
@@ -19,10 +17,9 @@
                     },
                 @endforeach
             ],
-            "oLanguage": {
-                "sSearch": "Filtrar:",
-                "sLoadingRecords": '<div><div class="row row-centered"><img width="30px" height="30px" src="../bootstrap/dist/images/loading_upload.gif" alt="cargando"></div></div>',
-            }
+            @foreach($functions as $key => $value)
+                "{{ $key }}": {{ $value }}
+            @endforeach
         });
     });
     
