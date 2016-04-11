@@ -6,9 +6,6 @@
 Datatable for Laravel 5. Con la ayuda de la clase Datatable para Laravel 5, podrán facilmente reutilizar y modificar datatables con consultas ajax.
 Por default, se utiliza con Bootstrap 3, pero puede ser utilizado sin ello.
 
-## Documentación
-Para la documentación detallada, consultar [http://saguajardo.github.io/datatable](http://saguajardo.github.io/datatable/).
-
 ## Changelog
 El log de cambios puede encontrarse [aquí](https://github.com/saguajardo/datatable/blob/master/CHANGELOG.md)
 
