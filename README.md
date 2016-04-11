@@ -30,7 +30,6 @@ Luego agregar la siguientes línea en el archivo `config/app.php`, en el apartad
     'providers' => [
         // ...
         Saguajardo\Datatable\DatatableServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
     ]
 ```
 
@@ -41,13 +40,9 @@ Ahora agregar los Facades (también en el archivo `config/app.php`), apartado `a
         // ...
         'Datatable'=> Saguajardo\Datatable\Facades\DatatableFacade::class,
         'DatatableBuilder'=> Saguajardo\Datatable\DatatableBuilder::class,
-        'Form' => Collective\Html\FormFacade::class,
-        'HTML' => Collective\Html\HtmlFacade::class,
     ]
 
 ```
-
-**Aviso**: Este paquete agregará el paquete `laravelcollective/html`. Es por ello que si no se contenía hasta el momento dicho paquete, se deben agregar los alias y provider de la clase `laravelcollective/html` de acuerdo a lo que se muestra en las líneas anteriores.
 
 ### Quick start
 
