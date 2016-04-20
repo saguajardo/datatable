@@ -43,7 +43,7 @@ class DatatableServiceProvider extends ServiceProvider
 
     public function boot()
     {
-		// cargar las vistas (por ahora no lo utilizo)
+		// cargar las vistas
         $this->loadViewsFrom(__DIR__.'/views', 'datatable');
 
         $this->publishes([
