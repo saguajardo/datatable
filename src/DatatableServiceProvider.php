@@ -1,7 +1,6 @@
 <?php namespace Saguajardo\Datatable;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\Application;
 
 class DatatableServiceProvider extends ServiceProvider
 {
