@@ -1,6 +1,7 @@
 <script>
+    var dt = null;
     $(document).ready(function() {
-        var dt = $('#{{ $id }}').DataTable({
+        dt = $('#{{ $id }}').DataTable({
             "ajax": {
                 "url": "{{ $url }}",
                 "method": "{{ $method }}",
