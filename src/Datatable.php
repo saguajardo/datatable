@@ -268,8 +268,11 @@ class Datatable {
      */
     protected function renderScript()
     {
-
-        $functions = $this->datatableHelper->mergeOptions($this->datatableOptions['functions'], $this->datatableHelper->getConfig('functions'));
+    	$functions = array ();
+    	
+    	if ($this->datatableHelper->getConfig ( 'render_functions' )) {
+    		$functions = $this->datatableHelper->getConfig ( 'functions' );
+    	}
 
         return $this->datatableHelper->getView()
             ->make($this->getTemplateScript())
@@ -292,8 +295,13 @@ class Datatable {
      * @return string
      */
     public function renderDatatable(array $options = [])
-    {
-        return $this->renderDefaultScriptDatatable() . $this->renderTable($options) . $this->renderScript();
+    {	
+    	// Verify if can render defaults options
+    	if($this->datatableHelper->getConfig('render_defaults')) {
+    		return $this->renderDefaultScriptDatatable() . $this->renderTable($options) . $this->renderScript();
+    	} else {
+    		return $this->renderTable($options) . $this->renderScript();
+    	}
     }
 
     /**
