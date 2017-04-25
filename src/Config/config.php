@@ -10,20 +10,34 @@ return [
     'script_template'            => 'datatable::script',
     'default_template'            => 'datatable::default',
 
+	'render_functions' => false, // Comment this line to disable defaults functions
+		
     // Functions
-    'functions'         => [
-                "oLanguage" => '{
-                    "sSearch": "Filtrar:",
-                    "sLoadingRecords": \'<div><div class="row row-centered"><img width="30px" height="30px" src="../bootstrap/dist/images/loading_upload.gif" alt="cargando"></div></div>\',
-                },',
-    ],
+	'functions'         => [
+			"oLanguage" => '{
+                "sSearch": "Filtrar:",
+			},',
+	],
+	
+	// Functions with Image Loading
+	/*
+	'functions'         => [
+			"oLanguage" => '{
+                "sSearch": "Filtrar:",
+                "sLoadingRecords": \'<div><div class="row row-centered"><img width="30px" height="30px" src="../bootstrap/dist/images/loading_upload.gif" alt="cargando"></div></div>\',
+		},',
+	],
+	*/
+		
+	'render_defaults' => true, // Comment this line to disable defaults values
 
-    // Datatable's Default values
-    'defaults' => [
-        "searching" => "true",
-        "ordering" => "true",
-        "dom" => "\"<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>\"",
-        "language" => '{
+	// Datatable's Default values
+		'defaults' => [
+		"searching" => "true",
+		"ordering" => "true",
+		"dom" => "\"<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>\"",
+		"language" => '{
+				"search": "Filtrar",
                 "zeroRecords": "No hay coincidencias",
                 "emptyTable": "No se encuentran registros",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
@@ -38,7 +52,7 @@ return [
                     "next": ">"
                 }
             }',
-    ],
+		],
     
 
 ];

@@ -1,10 +1,10 @@
 <script>
     var dt = null;
     $(document).ready(function() {
-        dt = $('#{{ $id }}').DataTable({
+        dt = $('#{!! $id !!}').DataTable({
             "ajax": {
-                "url": "{{ $url }}",
-                "method": "{{ $method }}",
+                "url": "{!! $url !!}",
+                "method": "{!! $method !!}",
                 error: function (xhr) {
                     alert("Error");
                 }
@@ -13,13 +13,13 @@
                 @foreach($fields as $field)
                     {
                         "data": function(data) {
-                            return ({{ $field }});
+                            return ({!! $field !!});
                         }
                     },
                 @endforeach
             ],
             @foreach($functions as $key => $value)
-                "{{ $key }}": {{ $value }}
+                "{!! $key !!}": {!! $value !!}
             @endforeach
         });
     });
