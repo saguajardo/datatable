@@ -11,12 +11,19 @@
             },
             "columns": [
                 @foreach($fields as $field)
-                    {
-                        "data": function(data) {
-                            return ({!! $field !!});
-                        }
-                    },
-                @endforeach
+                {
+	                @if(is_array($field))
+	                    "data": function(data) {
+	                    	return ({!! $field['value'] !!});
+	                	},
+	                	"visible": {!! $field['visible'] !!}
+	                @else
+	                	"data": function(data) {
+	                    	return ({!! $field !!});
+	                    }
+	                @endif
+	                },
+	            @endforeach
             ],
             @foreach($functions as $key => $value)
                 "{!! $key !!}": {!! $value !!}
