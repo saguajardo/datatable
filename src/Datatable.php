@@ -268,10 +268,9 @@ class Datatable {
      */
     protected function renderScript()
     {
-    	$functions = array ();
-    	
-    	if ($this->datatableHelper->getConfig ( 'render_functions' )) {
-    		$functions = $this->datatableHelper->getConfig ( 'functions' );
+        $colVis = '';
+    	if(array_key_exists('colVis', $this->datatableOptions)) {
+    		$colVis = $this->datatableOptions['colVis'];
     	}
 
         return $this->datatableHelper->getView()
@@ -279,7 +278,9 @@ class Datatable {
             ->with('id', $this->datatableOptions['data']['id'])
             ->with('url', $this->datatableOptions['url'])
             ->with('method', $this->datatableOptions['method'])
-            ->with('functions', $functions)
+            ->with('functions', $this->datatableOptions['functions'])
+            ->with('colVis', $colVis)
+            ->with('enableColVis', $this->datatableHelper->getConfig('colVis'))
             ->with('fields', $this->datatableOptions['data']['fields'])
             ->render();
 

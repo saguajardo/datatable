@@ -10,25 +10,8 @@ return [
     'script_template'            => 'datatable::script',
     'default_template'            => 'datatable::default',
 
-	'render_functions' => false, // Comment this line to disable defaults functions
-		
-    // Functions
-	'functions'         => [
-			"oLanguage" => '{
-                "sSearch": "Filtrar:",
-			},',
-	],
-	
-	// Functions with Image Loading
-	/*
-	'functions'         => [
-			"oLanguage" => '{
-                "sSearch": "Filtrar:",
-                "sLoadingRecords": \'<div><div class="row row-centered"><img width="30px" height="30px" src="../bootstrap/dist/images/loading_upload.gif" alt="cargando"></div></div>\',
-		},',
-	],
-	*/
-		
+    'colVis' => true,
+
 	'render_defaults' => true, // Comment this line to disable defaults values
 
 	// Datatable's Default values
